@@ -1,0 +1,11 @@
+# Read file on Config-Server:
+# app-about-company.properties or app-about-company.yml
+spring:
+  application:
+    name: truck-service
+  cloud:
+    config:
+      uri: http://localhost:7081
+management:
+  security:
+    enabled: false

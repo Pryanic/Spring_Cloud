@@ -1,0 +1,13 @@
+server:
+  port: 7080
+
+eureka:
+  instance:
+    appname: load-service
+  client:
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka
+management:
+  security:
+    enabled: false
