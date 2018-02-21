@@ -1,0 +1,25 @@
+zuul:
+  routes:
+    truck-service:
+      path: /truck/**
+      serviceId: TRUCK-SERVICE
+    load-service:
+      path: /load/**
+      serviceId: LOAD-SERVICE
+    other-service:
+      path: /other/**
+      serviceId: TRUCK-SERVICE
+
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: zuul-server
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka/

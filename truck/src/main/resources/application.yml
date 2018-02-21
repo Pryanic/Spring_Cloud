@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: truck-service
 server:
   port: 7180
 

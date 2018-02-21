@@ -14,6 +14,8 @@
         <module>eurekaserver</module>
         <module>truck</module>
         <module>common</module>
+        <module>zulu</module>
+        <module>ui</module>
     </modules>
 
     <properties>
@@ -40,6 +42,13 @@
                 <version>${spring.boot.starter.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zuul</artifactId>
+                <version>1.4.3.RELEASE</version>
             </dependency>
 
             <dependency>
