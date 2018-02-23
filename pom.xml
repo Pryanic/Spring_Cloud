@@ -16,6 +16,7 @@
         <module>common</module>
         <module>zulu</module>
         <module>ui</module>
+        <module>auth</module>
     </modules>
 
     <properties>

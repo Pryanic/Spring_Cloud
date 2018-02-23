@@ -15,7 +15,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
-app.use('/*/api', proxy('http://94.130.69.245:8545', {
+app.use('/*/api', proxy('http://localhost:8545', {
   proxyReqPathResolver: req => req.originalUrl,
   preserveHostHdr: true,
 }));
