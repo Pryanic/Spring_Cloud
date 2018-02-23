@@ -4,10 +4,6 @@ zuul:
         path: /uaa/**
         sensitiveHeaders:
         serviceId: AUTH-SERVICE
-    login-server:
-      path: /login
-      sensitiveHeaders:
-      serviceId: AUTH-SERVICE
     truck-service:
       path: /truck/**
       serviceId: TRUCK-SERVICE
@@ -27,7 +23,7 @@ security:
     sso:
       loginPath: /login
     client:
-      accessTokenUri: http://uaa-service/uaa/oauth/token
+      accessTokenUri: http://localhost:8080/uaa/oauth/token
       userAuthorizationUri: /uaa/oauth/authorize
       clientId: acme
       clientSecret: acmesecret
