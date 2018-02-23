@@ -2,42 +2,36 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const precss = require('precss');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  devtool: 'cheap-module-eval-source-map',
+  devServer: {
+    host: '0.0.0.0',
+    port: 8081,
+  },
   entry: [
+    'webpack-hot-middleware/client',
     'babel-polyfill',
-    './src/index',
+    path.resolve(__dirname, 'src/index'),
   ],
   output: {
-    path: path.resolve(__dirname, '../src/main/resources/static'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
-    new UglifyJSPlugin({
-      compress: {
-        warnings: true,
-      },
-      comments: false,
-    }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         context: __dirname,
         postcss: [autoprefixer, precss],
       },
     }),
-    new ExtractTextPlugin('styles.css'),
   ],
   module: {
     loaders: [
       {
-        loaders: ['babel-loader?plugins[]=transform-runtime'],
+        loaders: ['react-hot-loader', 'babel-loader?plugins[]=transform-runtime'],
         include: [
           path.resolve(__dirname, 'src'),
         ],
@@ -83,10 +77,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          loader: ['css-loader', 'sass-loader', 'postcss-loader'],
-        }),
+        loader: 'style-loader!css-loader!sass-loader!postcss-loader',
       },
     ],
   },
